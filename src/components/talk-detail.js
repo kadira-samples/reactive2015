@@ -1,15 +1,15 @@
 /* @flow */
 /*eslint-disable prefer-const */
 
-import React from "react-native";
+import React from "react";
 
-let {
+import {
   Image,
   Text,
   View,
   ScrollView,
   StyleSheet
-} = React;
+} from 'react-native';
 
 const styles = StyleSheet.create({
   title: {

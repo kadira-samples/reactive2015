@@ -1,17 +1,17 @@
 /* @flow */
 /*eslint-disable prefer-const */
 
-import React from "react-native";
+import React from "react";
 
 import TalkDetail from "./talk-detail";
 
-let {
+import {
   Image,
   Text,
   View,
   StyleSheet,
   TouchableHighlight
-} = React;
+} from 'react-native';
 
 const styles = StyleSheet.create({
   item: {
@@ -23,8 +23,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    padding: 10,
-    backgroundColor: "#efefef"
+    padding: 8,
+    marginTop: 30,
+    backgroundColor: "#efefef",
   },
   content: {
     backgroundColor: "white",
@@ -101,27 +102,42 @@ const styles = StyleSheet.create({
 
 class ScheduleItem extends React.Component {
   _goToItem(item) {
-    this.props.navigator.push({
-      component: TalkDetail,
-      title: item.title.length > 25 ? item.title.substr(0,25) +"..." : item.title,
-      passProps: {...item}
-    });
+    this.props.onSelect(item);
   }
+
+  getHeader(categoryId) {
+    const texts = [
+      (
+        <Text
+          style={styles.time}
+          key="time"
+        >
+          {this.props.time}
+        </Text>
+      ),
+      (
+        <Text
+          style={[styles.category,categoryId ? styles[categoryId] : {}]}
+          key="header"
+        >
+          {this.props.category}
+        </Text>
+      )
+    ];
+
+    return (
+      <View style={styles.header}>
+        {this.props.noHeader === true? null : texts }
+      </View>
+    );
+  }
+
   render() {
     const categoryId = this.props.category ?
       this.props.category.replace(/\s/g, "") : null;
     return (
       <View style={[styles.item, this.props.style]}>
-        <View style={styles.header}>
-          <Text
-            style={styles.time}>
-            {this.props.time}
-          </Text>
-          <Text
-            style={[styles.category,categoryId ? styles[categoryId] : {}]}>
-            {this.props.category}
-          </Text>
-        </View>
+        {this.getHeader(categoryId)}
         {this.props.talk ?
           <TouchableHighlight
               onPress={this._goToItem.bind(this, this.props)}>
