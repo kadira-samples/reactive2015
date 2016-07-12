@@ -1,16 +1,15 @@
 /* @flow */
 /*eslint-disable prefer-const */
 
-import React from "react-native";
-
-import ScheduleItem from "./schedule-item";
-
-let {
+import React from "react";
+import {
   Text,
   View,
   ScrollView,
   TouchableHighlight
-} = React;
+} from 'react-native';
+
+import ScheduleItem from "./schedule-item";
 
 class ScheduleList extends React.Component {
   render() {
