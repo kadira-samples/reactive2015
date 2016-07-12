@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flex: 1,
     flexDirection: "row",
-    alignItems: 'flex-start'
+    alignItems: 'center'
   },
   description: {
     flex: 1
@@ -49,21 +49,21 @@ const styles = StyleSheet.create({
   }
 });
 
-const Tweet = () => (
+const Tweet = (props) => (
   <View style={styles.item}>
     <Image
       resizeMode="cover"
-      source={{uri: this.props.user.profile_image_url}}
+      source={{uri: props.user.profile_image_url}}
       style={styles.image}/>
     <View style={styles.description}>
       <Text
         style={styles.title}>
-        {this.props.text}
+        {props.text}
       </Text>
       <Text style={styles.speaker}>
-        {this.props.user.name}
+        {props.user.name}
         <Text style={styles.company}>
-          {" - @"}{this.props.user.screen_name}
+          {" - @"}{props.user.screen_name}
         </Text>
       </Text>
     </View>
