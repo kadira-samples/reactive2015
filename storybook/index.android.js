@@ -3,7 +3,7 @@ import * as storybook from '@kadira/react-native-storybook';
 
 // import your stories
 storybook.configure(function () {
-  require('./src/components/stories');
+  require('../src/components/stories');
 }, module);
 
 const StorybookUI = storybook.getStorybookUI({port: 9001, host: 'localhost'});
