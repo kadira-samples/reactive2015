@@ -12,20 +12,20 @@ import {
   View
 } from 'react-native';
 
+import Speaker from './src/components/speaker';
+
+
+const user = {
+  "bio" : "Founder of Seattle based startup pol.is, Senior Front End Developer at Formidable Labs. He has architected and built client side applications for some of the largest brands in the world. Teaches in a series of in depth talks on ReactJS given at Facebook Seattle. Colin's primary focus is UI design, product design and information architecture.",
+  "country" : "Seattle,USA",
+  "name" : "COLIN MEGILL",
+  "photo" : "https://reactive2015.com/assets/img/team/colin_megill.jpg"
+};
+
 class reactive2015 extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Speaker {...user}/>
     );
   }
 }
@@ -36,17 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  }
 });
 
 AppRegistry.registerComponent('reactive2015', () => reactive2015);
