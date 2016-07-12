@@ -65,6 +65,13 @@ import com.android.build.OutputFile
  * ]
  */
 
+ if (System.getenv('STORYBOOK_BUNDLE')){
+   project.ext.react = [
+     entryFile: "storybook/index.android.js",
+     bundleInStorybook: true
+   ]
+ }
+
 apply from: "../../node_modules/react-native/react.gradle"
 
 /**
@@ -108,6 +115,10 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+        storybook {
+           initWith(buildTypes.debug)
+           applicationIdSuffix ".storybook"
         }
     }
     // applicationVariants are e.g. debug, release

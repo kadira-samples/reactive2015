@@ -26,6 +26,15 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage()
       );
     }
+
+    @Override
+    protected String getJSMainModuleName() {
+      if (BuildConfig.BUILD_TYPE.equals("storybook")) {
+        return "storybook/index.android";
+      } else {
+        return "index.android";
+      }
+    }
   };
 
   @Override
